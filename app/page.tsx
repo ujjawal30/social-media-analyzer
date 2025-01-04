@@ -29,8 +29,8 @@ export default function PostAnalyzer() {
         };
         const response = await runFlow(flowIdOrName, langflowId, postType, tweaks);
         if (response) {
-          setResponseData(response);
-          console.log(response);
+          console.log(response.outputs[0].outputs[0].outputs.text.message)
+          setResponseData(response.outputs[0].outputs[0].outputs.text.message);
         }
       } catch (error: any) {
         console.error("Main Error", error.message);

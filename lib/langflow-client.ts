@@ -36,7 +36,7 @@ async function initiateSession(flowId: string, langflowId: string, inputValue: s
 async function runFlow(flowIdOrName: string, langflowId: string, postType: string, tweaks = {}) {
   try {
     const initResponse = await initiateSession(flowIdOrName, langflowId, postType, tweaks);
-    return initResponse.outputs[0].outputs[0].outputs.text.message;
+    return initResponse;
   } catch (error) {
     console.error("Error running flow:", error);
   }
