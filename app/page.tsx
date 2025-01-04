@@ -1,6 +1,6 @@
 "use client";
 
-import LangflowClient from "@/lib/langflow-client";
+import runFlow from "@/lib/langflow-client";
 import { useState } from "react";
 
 export default function Page() {
@@ -10,35 +10,28 @@ export default function Page() {
   };
 
   const handleSubmit = async () => {
-    console.log(postType);
-
-    const flowIdOrName = "693ea184-583f-4aa3-8f7e-714074ad788b";
-    const langflowId = "447d8833-423b-4959-af6c-d50bbb3943c2";
-    const applicationToken = "AstraCS:jthZjCEJLelSwmUmiNalOZtY:60c6109068c71a75fa3b1fb595d6b9b388f80aaa83194798b71ef66e466fe323";
-    const langflowClient = new LangflowClient("https://api.langflow.astra.datastax.com", applicationToken);
-
-    try {
-      const tweaks = {
-        "TextInput-VHOxL": {},
-        "Agent-4RXYg": {},
-        "AstraDBToolComponent-4DRur": {},
-        "Agent-9roLF": {},
-        "TextOutput-ZRVsf": {},
-      };
-
-      const response = await langflowClient.runFlow(flowIdOrName, langflowId, postType, tweaks);
-      if (response && response.outputs) {
-        const flowOutputs = response.outputs[0];
-        const firstComponentOutputs = flowOutputs.outputs[0];
-        const output = firstComponentOutputs.outputs.message;
-
-        console.log("Final Output:", output.message.text);
+    const flowIdOrName = process.env.NEXT_PUBLIC_FLOW_ID_OR_NAME 
+    const langflowId = process.env.NEXT_PUBLIC_LANGFLOW_ID
+    if (flowIdOrName && langflowId){
+      try {
+        const tweaks = {
+          "TextInput-VHOxL": {},
+          "Agent-4RXYg": {},
+          "AstraDBToolComponent-4DRur": {},
+          "Agent-9roLF": {},
+          "TextOutput-ZRVsf": {},
+        };
+        const response = await runFlow(flowIdOrName, langflowId, postType, tweaks);
+        if (response && response.outputs) {
+          const output = response.outputs[0].outputs[0].outputs.text.message
+          console.log(output)
+        }
+      } catch (error: any) {
+        console.error("Main Error", error.message);
       }
-    } catch (error: any) {
-      console.error("Main Error", error.message);
     }
   };
-
+  
   return (
     <div className="flex w-full max-w-sm items-center space-x-2 m-auto h-screen">
       <input
