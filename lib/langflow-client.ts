@@ -36,12 +36,7 @@ async function initiateSession(flowId: string, langflowId: string, inputValue: s
 async function runFlow(flowIdOrName: string, langflowId: string, postType: string, tweaks = {}) {
   try {
     const initResponse = await initiateSession(flowIdOrName, langflowId, postType, tweaks);
-    console.log("Init Response:", initResponse);
-    if (initResponse && initResponse.outputs && initResponse.outputs[0].outputs[0].artifacts.stream_url) {
-      const streamUrl = initResponse.outputs[0].outputs[0].artifacts.stream_url;
-      console.log(`Streaming from: ${streamUrl}`);
-    }
-    return initResponse;
+    return initResponse.outputs[0].outputs[0].outputs.text.message;
   } catch (error) {
     console.error("Error running flow:", error);
   }
