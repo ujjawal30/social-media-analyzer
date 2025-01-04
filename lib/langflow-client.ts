@@ -68,9 +68,9 @@ class LangflowClient {
     flowIdOrName: string,
     langflowId: string,
     inputValue: string,
-    inputType = "chat",
-    outputType = "chat",
     tweaks = {},
+    inputType = "text",
+    outputType = "text",
     stream = false
     // onUpdate,
     // onClose,
@@ -91,3 +91,5 @@ class LangflowClient {
     }
   }
 }
+
+export default LangflowClient;
