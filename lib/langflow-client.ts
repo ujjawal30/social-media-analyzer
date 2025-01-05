@@ -17,11 +17,11 @@ async function post(endpoint: string, body: any, headers: { [key: string]: strin
       body: JSON.stringify(body),
     });
 
-    const responseMessage = await response.json();
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText} - ${JSON.stringify(responseMessage)}`);
+    if (response.status == 200) {
+      const responseMessage = await response.json();
+      return responseMessage;
     }
-    return responseMessage;
+
   } catch (error: any) {
     console.error("Request Error:", error.message);
     throw error;
@@ -36,6 +36,7 @@ async function initiateSession(flowId: string, langflowId: string, inputValue: s
 async function runFlow(flowIdOrName: string, langflowId: string, postType: string, tweaks = {}) {
   try {
     const initResponse = await initiateSession(flowIdOrName, langflowId, postType, tweaks);
+    console.log("initResponse", initResponse)
     return initResponse;
   } catch (error) {
     console.error("Error running flow:", error);
