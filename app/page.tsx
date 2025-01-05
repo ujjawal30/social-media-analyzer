@@ -41,41 +41,43 @@ export default function PostAnalyzer() {
   };
 
   return (
-    <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
-      <div className="flex flex-col items-center justify-center h-full">
-        <div className="bg-zinc-950 backdrop-blur-lg rounded-2xl shadow-2xl p-8 w-full max-w-2xl transform transition-all border border-white/10">
-          <h1 className="text-3xl font-semibold text-center text-white mb-2 drop-shadow-lg">EngageWise</h1>
-          <h2 className="text-lg font-light text-center text-white/80 mb-6 drop-shadow-lg">AI-powered social media post analysis</h2>
-          <div className="flex flex-col space-y-6">
-            <input
-              className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-white/50 focus:border-[#6633ee] focus:outline-none focus:ring-2 focus:ring-[#6633ee] transition-all"
-              type="text"
-              placeholder="Enter Post Type (e.g., Reels, Carousel, Images)"
-              onChange={inputHandler}
-              value={postType}
-            />
-            <button
-              className="w-full bg-[#6633ee] text-white py-3 rounded-xl font-semibold hover:bg-[#6633ee50] transition-all focus:outline-none focus:ring-2 focus:ring-[#6633ee70] focus:ring-offset-2 shadow-lg hover:shadow-xl flex items-center justify-center"
-              onClick={handleSubmit}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="flex items-center">
-                  <svg className="animate-spin h-5 w-5 mr-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12s5.373 12 12 12v-4a8 8 0 01-8-8z"
-                    ></path>
-                  </svg>
-                  Loading...
-                </div>
-              ) : (
-                "Analyze Post"
-              )}
-            </button>
-            {responseData && <AnalysisResult result={responseData} />}
+    <div className="h-full w-full bg-white">
+      <div className="absolute h-full w-full bg-[radial-gradient(#6633ee70_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="bg-zinc-950 backdrop-blur-lg rounded-2xl shadow-2xl p-8 w-full max-w-2xl transform transition-all border border-white/10">
+            <h1 className="text-3xl font-semibold text-center text-white mb-2 drop-shadow-lg">EngageWise</h1>
+            <h2 className="text-lg font-light text-center text-white/80 mb-6 drop-shadow-lg">AI-powered social media post analysis</h2>
+            <div className="flex flex-col space-y-6">
+              <input
+                className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-white/50 focus:border-[#6633ee] focus:outline-none focus:ring-2 focus:ring-[#6633ee] transition-all"
+                type="text"
+                placeholder="Enter Post Type (e.g., Reels, Carousel, Images)"
+                onChange={inputHandler}
+                value={postType}
+              />
+              <button
+                className="w-full bg-[#6633ee] text-white py-3 rounded-xl font-semibold hover:bg-[#6633ee50] transition-all focus:outline-none focus:ring-2 focus:ring-[#6633ee70] focus:ring-offset-2 shadow-lg hover:shadow-xl flex items-center justify-center"
+                onClick={handleSubmit}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center">
+                    <svg className="animate-spin h-5 w-5 mr-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12s5.373 12 12 12v-4a8 8 0 01-8-8z"
+                      ></path>
+                    </svg>
+                    Loading...
+                  </div>
+                ) : (
+                  "Analyze Post"
+                )}
+              </button>
+              {responseData && <AnalysisResult result={responseData} />}
+            </div>
           </div>
         </div>
       </div>
