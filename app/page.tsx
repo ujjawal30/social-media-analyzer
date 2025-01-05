@@ -8,7 +8,6 @@ export default function PostAnalyzer() {
   const [postType, setPostType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<string | null>(null);
-  const [isFlipped, setIsFlipped] = useState(false);
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPostType(e.target.value);
@@ -37,7 +36,6 @@ const handleSubmit = async () => {
         console.log("response........", response)
         console.log("data.........",response.outputs[0].outputs[0].outputs.text.message);
         setResponseData(response.outputs[0].outputs[0].outputs.text.message);
-        setIsFlipped(true); // Flip the card after setting the response data
       }
     } catch (error: any) {
       console.error("Main Error", error.message);
