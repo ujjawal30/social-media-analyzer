@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social Media Post Analyzer
+
+This repository contains the code for a **Next.js** application and **LangFlow configurations** developed for a hackathon. Below is a detailed overview of the repository structure, setup, and instructions for contributing.
+
+## Repository Structure
+
+```
+.
+├── langflow/
+│   ├── flow.json                # JSON file for LangFlow configurations
+│   ├── sample_data.sql          # SQL file for inserting sample data into DataStax Astra DB
+│   └── generate_sample_data.py  # Python script to generate sample data
+├── app/                         # Next.js pages
+├── components/                  # Reusable React components
+├── public/                      # Static assets
+├── package.json                 # Project dependencies and scripts
+└── README.md                    # Project documentation
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- DataStax Astra DB account (for SQL data)
+- Python 3.x (for generating SQL using the script)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
 
-## Learn More
+2. Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Or, if using yarn:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. Configure environment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Create a `.env.local` file in the root directory and specify the following variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```env
+   NEXT_PUBLIC_FLOW_ID_OR_NAME=
+   NEXT_PUBLIC_LANGFLOW_ID=
+   APPLICATION_TOKEN=
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Or, if using yarn:
+
+   ```bash
+   yarn dev
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
+## LangFlow Configuration
+
+The `langflow/` folder contains:
+
+- **`sample_data.json`**: This file holds sample configurations for LangFlow workflows.
+- **`generate_sample_data.py`**: A Python script to generate sample data in SQL format. To use this script:
+
+  ```bash
+  python langflow/generate_sample_data.py
+  ```
+
+  This will create a new `sample_data.sql` file with the generated data.
+
+- **`sample_data.sql`**: A SQL script to insert sample data into a DataStax Astra DB. To run this script, use the CQL console in the DataStax Astra DB dashboard:
+
+  1. Navigate to your database in the DataStax Astra DB dashboard.
+  2. Open the CQL console.
+  3. Copy the script from sample_data.sql and run it in CQL console.
+
+## Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the application for production.
+- `npm start`: Start the production server.
+- `npm run lint`: Run ESLint to analyze code for potential errors.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or issues, feel free to open an issue or contact the team at [devanshkhare0@gmail.com].
