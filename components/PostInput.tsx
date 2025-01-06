@@ -12,13 +12,13 @@ interface PostInputProps {
 const PostInput: React.FC<PostInputProps> = ({ postType, setPostType, isLoading, onSubmit, error }) => {
   return (
     <div className="text-center space-y-2">
-      <span className="block text-gray-700 font-semibold">What do you want to post?</span>
+      <span className="block text-gray-700 font-semibold">Which type of post do you want to analyze?</span>
       <div className="flex items-center gap-2">
         <input
           id="post"
           type="text"
           className="w-full px-4 py-2 border-2 border-gray-200 rounded-full focus-visible:outline-blue-700 h-12"
-          placeholder="Type your post type here..."
+          placeholder="e.g. reels, carousels, images"
           value={postType}
           onChange={(e) => setPostType(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && onSubmit()}
