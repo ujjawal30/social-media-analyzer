@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a Social Media Engagement Analyzer application. The application utilizes DataStax Langflow to create a flow that fetches data from Astra DB DataStax. It calculates the average engagement metrics (likes, comments, shares) for each post type and generates insights based on user-requested post types.
+This project is a Social Media Engagement Analyzer application designed to analyze and enhance content performance. It leverages DataStax Langflow to create workflows that fetch data from Astra DB DataStax. The application calculates average engagement metrics such as likes, comments, and shares for various post types. Additionally, it generates actionable insights based on user-selected post types, empowering users to make data-driven decisions to improve engagement.
 
 ## Tech Stack
 
