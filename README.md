@@ -1,20 +1,21 @@
-# Social Media Analyzer
+# EngageWise - Social Media Engagement Analyzer
 
 ## Project Overview
 
-This project is a Social Media Analyzer application developed for a hackathon. The application utilizes DataStax Langflow to create a flow that fetches data from Astra DB DataStax. It calculates the average engagement metrics (likes, comments, shares) for each post type and generates insights based on user-requested post types.
+This project is a Social Media Engagement Analyzer application. The application utilizes DataStax Langflow to create a flow that fetches data from Astra DB DataStax. It calculates the average engagement metrics (likes, comments, shares) for each post type and generates insights based on user-requested post types.
 
 ## Tech Stack
 
-- **DataStax Langflow**: Used for exposing API for GenAI flow.
-- **Astra DB**: Used for storing sample data.
-- **Next.js**: Used for integrating the frontend.
+- **DataStax Langflow**: Facilitates API exposure for GenAI workflows.
+- **Astra DB**: Serves as the database for storing and managing sample data.
+- **Next.js**: Handles the frontend development and API integration for a dynamic user interface.
 
 ## Features
 
-- Fetch data from Astra DB.
-- Calculate average engagement metrics for each post type.
-- Generate insights based on user-requested post types.
+- **Seamless Data Retrieval**: Fetch and process data efficiently from Astra DB.
+- **Engagement Metrics Analysis**: Calculate average engagement metrics (likes, comments, shares, etc.) for each post type.
+- **Customizable Insights**: Generate actionable insights tailored to user-selected post types for targeted analysis.
+- **Engagement Enhancement Suggestions**: Provide data-driven recommendations to improve post engagement and optimize content strategy.
 
 ## Getting Started
 
